@@ -1,0 +1,53 @@
+.running-line {
+    color: #dc3545; /* change the font color to red */
+  }
+ /* Change the background color of the description section */
+.description-section {
+    background-color: #f8f9fa;
+  }
+  
+  /* Increase the font size of the destination descriptions */
+  .destination-description {
+    font-size: 1.2rem;
+  }
+  
+  /* Add a border to the picture gallery images */
+  .gallery-image {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  /* Style the search form */
+  .search-form {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  .search-form label {
+    font-weight: bold;
+  }
+  
+  .search-form input[type="text"],
+  .search-form input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .search-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .search-form button[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+   

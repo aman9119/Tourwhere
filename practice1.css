@@ -1,0 +1,53 @@
+*body{
+    background-color: red;
+}
+.header-container{
+    text-align: right;
+    object-position: 0%;
+    background-position: 2%;
+    background-color: burlywood;
+}
+.header-nav{
+    list-style: circle;
+    color: yellowgreen;
+}
+.table{
+    color: thistle;
+    border-left-style: dashed;
+    border-right-style: dashed;
+    border-bottom-style: dashed;
+    border-top-style: dashed;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+
+}
+.table2{
+    color: thistle;
+    border-left-style: dashed;
+    border-right-style: dashed;
+    border-bottom-style: dashed;
+    border-top-style: dashed;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+.table3{
+    color: thistle;
+    border-left-style: dashed;
+    border-right-style: dashed;
+    border-bottom-style: dashed;
+    border-top-style: dashed;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+.image{
+    size: 20%vw;
+    size-adjust: 20%;
+    object-fit: cover;
+    object-position: 0%;
+    background-position: 2%;
+    background-color: burlywood;
+
+}
