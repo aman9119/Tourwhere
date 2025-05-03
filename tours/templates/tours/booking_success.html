@@ -1,0 +1,7 @@
+{% extends 'tours/base.html' %}
+{% block title %}Booking Successful{% endblock %}
+{% block content %}
+<h1>Thank you for your booking!</h1>
+<p>Your booking for the tour <strong>{{ tour.title }}</strong> was successful.</p>
+<a class="btn btn-primary" href="/tours/">Back to Tours</a>
+{% endblock %}

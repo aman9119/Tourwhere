@@ -1,0 +1,24 @@
+{% extends 'tours/base.html' %}
+{% block title %}Destinations{% endblock %}
+{% block content %}
+<h1>Destinations</h1>
+<div class="row">
+    {% for destination in destinations %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if destination.image %}
+            <img src="{{ destination.image.url }}" class="card-img-top" alt="{{ destination.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ destination.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ destination.country }}</h6>
+                <p class="card-text">{{ destination.description }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><div class="alert alert-info">No destinations available.</div></div>
+    {% endfor %}
+</div>
+<a class="btn btn-primary" href="/tours/">View Tours</a>
+{% endblock %}

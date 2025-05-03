@@ -1,0 +1,11 @@
+{% extends 'tours/base.html' %}
+{% block title %}Book Tour{% endblock %}
+{% block content %}
+<h1>Book Tour: {{ tour.title }}</h1>
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Book Now</button>
+</form>
+<a class="btn btn-secondary" href="/tours/">Back to Tours</a>
+{% endblock %}

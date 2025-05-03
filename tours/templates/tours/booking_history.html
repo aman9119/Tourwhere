@@ -1,0 +1,13 @@
+{% extends 'tours/base.html' %}
+{% block title %}Booking History{% endblock %}
+{% block content %}
+<h1>Your Bookings</h1>
+<ul class="list-group mb-4">
+    {% for booking in bookings %}
+        <li class="list-group-item">{{ booking.tour.title }} ({{ booking.tour.start_date }} to {{ booking.tour.end_date }}) - {{ booking.num_people }} people</li>
+    {% empty %}
+        <li class="list-group-item">No bookings found.</li>
+    {% endfor %}
+</ul>
+<a class="btn btn-secondary" href="/tours/">Back to Tours</a>
+{% endblock %}

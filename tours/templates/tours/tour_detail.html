@@ -1,0 +1,92 @@
+{% extends 'tours/base.html' %}
+{% block title %}{{ tour.title }} | Tour Details{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card mb-4">
+      {% if tour.destination.image %}
+      <img src="{{ tour.destination.image.url }}" class="card-img-top" alt="{{ tour.destination.name }}">
+      {% endif %}
+      <div class="card-body">
+        <h2 class="card-title">{{ tour.title }}</h2>
+        <h5 class="card-subtitle mb-2 text-muted">{{ tour.destination.name }} ({{ tour.destination.country }})</h5>
+        <p class="card-text">{{ tour.description }}</p>
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item"><strong>Dates:</strong> {{ tour.start_date }} to {{ tour.end_date }}</li>
+          <li class="list-group-item"><strong>Price:</strong> ${{ tour.price }}</li>
+          <li class="list-group-item">
+            <strong>Average Rating:</strong>
+            {% if avg_rating %}
+              <span class="text-warning">{{ avg_rating|floatformat:1 }} ★</span>
+            {% else %}
+              <span class="text-muted">No ratings yet</span>
+            {% endif %}
+          </li>
+        </ul>
+        <a href="/tours/{{ tour.id }}/book/" class="btn btn-success btn-lg"><i class="fa fa-ticket-alt"></i> Book This Tour</a>
+        <a href="/tours/" class="btn btn-link">Back to Tours</a>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h4 class="card-title mb-3">Reviews</h4>
+        <div id="reviews-list">
+          {% for review in reviews %}
+            <div class="mb-3 border-bottom pb-2">
+              <strong>{{ review.user.username }}</strong>
+              <span class="text-warning">{% for i in "12345"|slice:":review.rating" %}★{% endfor %}</span>
+              <small class="text-muted">{{ review.created_at|date:"M d, Y H:i" }}</small>
+              <p class="mb-1">{{ review.comment }}</p>
+            </div>
+          {% empty %}
+            <div class="text-muted">No reviews yet.</div>
+          {% endfor %}
+        </div>
+        {% if user.is_authenticated and not user_review %}
+        <hr>
+        <h5>Leave a Review</h5>
+        <form id="review-form" method="post" action="" class="mb-2">
+          {% csrf_token %}
+          {{ review_form.rating }}<br>
+          {{ review_form.comment }}
+          <button type="submit" class="btn btn-primary btn-sm mt-2">Submit Review</button>
+        </form>
+        <div id="review-form-msg"></div>
+        {% elif user.is_authenticated and user_review %}
+        <div class="alert alert-info mt-3">You have already reviewed this tour.</div>
+        {% else %}
+        <div class="alert alert-warning mt-3">Please <a href="/login/">login</a> to leave a review.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('review-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch('', {
+          method: 'POST',
+          headers: { 'X-Requested-With': 'XMLHttpRequest' },
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById('review-form-msg').innerHTML = '<div class="alert alert-success">Review submitted!</div>';
+            const reviewsList = document.getElementById('reviews-list');
+            const newReview = `<div class="mb-3 border-bottom pb-2"><strong>${data.username}</strong> <span class="text-warning">${'★'.repeat(data.rating)}</span> <p class="mb-1">${data.comment}</p></div>`;
+            reviewsList.insertAdjacentHTML('afterbegin', newReview);
+            form.remove();
+          } else {
+            document.getElementById('review-form-msg').innerHTML = '<div class="alert alert-danger">' + Object.values(data.errors).join('<br>') + '</div>';
+          }
+        });
+      });
+    }
+  });
+</script>
+{% endblock %}

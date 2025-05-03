@@ -1,0 +1,43 @@
+{% extends 'tours/base.html' %}
+{% block title %}Tours{% endblock %}
+{% block content %}
+<h1>Tours</h1>
+<form method="get" action="" class="row g-3 mb-4">
+    <div class="col-md-5">
+        <input type="text" name="q" class="form-control" placeholder="Search tours..." value="{{ query }}">
+    </div>
+    <div class="col-md-5">
+        <select name="destination" class="form-select">
+            <option value="">All Destinations</option>
+            {% for dest in destinations %}
+                <option value="{{ dest.id }}" {% if selected_destination == dest.id|stringformat:'s' %}selected{% endif %}>{{ dest.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+<div class="row">
+    {% for tour in tours %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if tour.destination.image %}
+            <img src="{{ tour.destination.image.url }}" class="card-img-top" alt="{{ tour.destination.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ tour.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ tour.destination.name }}</h6>
+                <p class="card-text">{{ tour.description }}</p>
+                <p class="card-text"><small>Dates: {{ tour.start_date }} to {{ tour.end_date }}</small></p>
+                <p class="card-text"><strong>Price: ${{ tour.price }}</strong></p>
+                <a class="btn btn-success btn-sm mt-2" href="/tours/{{ tour.id }}/book/">Book Now</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><div class="alert alert-info">No tours available.</div></div>
+    {% endfor %}
+</div>
+<a class="btn btn-secondary" href="/destinations/">View Destinations</a>
+{% endblock %}
