@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourwhere</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Header: Modern, minimal, logo clickable, mobile-friendly nav -->
+    <header role="banner">
+      <div class="header-container">
+        <a href="index.html" aria-label="Home">
+          <img src="https://mumbaimirror.indiatimes.com/thumb/msid-74633135,width-1200,height-900,resizemode-4/.jpg" alt="Tourwhere Logo" class="header-logo" />
+        </a>
+        <span class="website-name">Tourwhere</span>
+        <nav class="navbar" aria-label="Main navigation">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="destination.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          </ul>
+          <button id="darkModeToggle" class="btn btn-outline-secondary ms-3" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <span aria-hidden="true">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section: Gen Z focused, bold, energetic, CTA -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Adventure Awaits. <span class="highlight">Where Next?</span></h1>
+        <p class="hero-subheading">Discover, vibe, and share your journey. The world is yours—let’s explore it together.</p>
+        <a href="destination.html" class="btn btn-cta">Start Exploring</a>
+      </div>
+    </section>
+
+    <main class="container-fluid modern-main" role="main">
+      <section class="info-cards-section">
+        <div class="info-cards-container">
+          <div class="info-card">
+            <span class="info-icon">✈️</span>
+            <h2>Book Flights</h2>
+            <p>Find the best deals and fly to your dream destinations with ease.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🏨</span>
+            <h2>Stay Stylish</h2>
+            <p>Choose from trendy hotels, hostels, and unique stays curated for Gen Z vibes.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🚗</span>
+            <h2>Move Freely</h2>
+            <p>Rent rides, bikes, or cars and explore every corner your way.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🤳</span>
+            <h2>Share Moments</h2>
+            <p>Snap, share, and inspire your crew with your travel stories.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="popular-destinations" aria-labelledby="popular-destinations-heading">
+        <h2 id="popular-destinations-heading" class="text-center">Popular Destinations</h2>
+        <div class="destination-container d-flex justify-content-center flex-wrap">
+          <article class="destination-card m-3" tabindex="0" aria-label="Sikkim destination card">
+            <img src="http://surl.li/mezwi" alt="Scenic view of Sikkim mountains" class="img-fluid rounded" />
+            <h3>Sikkim</h3>
+            <p>Sikkim, a pristine gem in the northeastern part of India, offers breathtaking natural beauty and cultural diversity.</p>
+          </article>
+          <article class="destination-card m-3" tabindex="0" aria-label="Kashmir destination card">
+            <img src="http://surl.li/mezyu" alt="Beautiful landscape of Kashmir valley" class="img-fluid rounded" />
+            <h3>Kashmir</h3>
+            <p>Kashmir, often referred to as 'Paradise on Earth,' is renowned for its breathtaking natural beauty and serene landscapes.</p>
+          </article>
+          <article class="destination-card m-3" tabindex="0" aria-label="Delhi destination card">
+            <img src="http://surl.li/mfabj" alt="Historic sites in Delhi" class="img-fluid rounded" />
+            <h3>Delhi</h3>
+            <p>Delhi, the vibrant and historically rich capital of India, is a treasure trove of tourist attractions.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer: Minimal, modern, concise -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p>&copy; 2025 Tourwhere. All rights reserved.</p>
+        <nav aria-label="Footer navigation">
+          <a href="#" aria-label="Privacy Policy">Privacy Policy</a> |
+          <a href="#" aria-label="Terms of Service">Terms of Service</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
